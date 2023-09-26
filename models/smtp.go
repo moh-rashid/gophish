@@ -93,7 +93,7 @@ func (s *SMTP) Validate() error {
 	if len(hp) > 2 {
 		return ErrInvalidHost
 	} else if len(hp) < 2 {
-		hp = append(hp, "25")
+		hp = append(hp, "587")
 	}
 	_, err = strconv.Atoi(hp[1])
 	if err != nil {
@@ -113,7 +113,7 @@ func (s *SMTP) GetDialer() (mailer.Dialer, error) {
 	// Setup the message and dial
 	hp := strings.Split(s.Host, ":")
 	if len(hp) < 2 {
-		hp = append(hp, "25")
+		hp = append(hp, "587")
 	}
 	host := hp[0]
 	// Any issues should have been caught in validation, but we'll
